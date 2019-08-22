@@ -1,18 +1,28 @@
 const initState = {
-  posts: [
-    { id: 0, title: "Adam House", description: "BLALKDJFKLSDJFLSDKJ" },
-    { id: 1, title: "Badam House", description: "BLALKDJFKLSDJFLSDKJ" },
-    { id: 2, title: "Tadam House", description: "BLALKDJFKLSDJFLSDKJ" }
-  ]
+  postSuccess: null,
+  postError: null
 };
 
 const postReducer = (state = initState, action) => {
   switch (action.type) {
     case "CREATE_POST":
-      return state;
+      console.log("Post Created");
+      return {
+        ...state,
+        postSuccess: true
+      };
     case "CREATE_POST_ERROR":
       console.log("create project error", action.error);
-      return state;
+      return {
+        ...state,
+        postError: action.error
+      };
+    case "CLEAR_POST":
+      return {
+        ...state,
+        postSuccess: null,
+        postError: null
+      };
     default:
       return state;
   }

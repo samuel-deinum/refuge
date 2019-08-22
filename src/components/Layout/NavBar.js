@@ -3,20 +3,24 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import SignedInLinks from "./SignedInLinks";
-import SignedOutLinks from "./SignedOutLinks";
+import icon from "../../assets/images/refugioicon.svg";
 
 const navBar = props => {
   const { auth } = props;
-  console.log(auth.uid);
 
-  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+  let navClass = "nav-wrapper white";
+
+  if (!auth.uid) {
+    navClass += " hide";
+  }
+
   return (
-    <nav className="nav-wrapper grey darken-3">
+    <nav className={navClass}>
       <div className="container">
-        <Link to="/" className="brand-logo">
-          Refuge
+        <Link to="/" className="brand-logo left">
+          <img src={icon} width="60px" height="auto" />
         </Link>
-        {links}
+        <SignedInLinks />
       </div>
     </nav>
   );

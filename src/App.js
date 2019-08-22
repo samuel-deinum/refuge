@@ -1,14 +1,15 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import "./App.css";
 import NavBar from "./components/Layout/NavBar";
-import DashBoard from "./components/DashBoard/DashBoard";
-import HostDetails from "./components/Host/HostDetails";
+import Search from "./components/Search/Search";
+import UserProfile from "./components/User/UserProfile";
+import EditProfile from "./components/User/EditProfile";
 import SignIn from "./components/auth/SignIn";
+import RegisterRequest from "./components/Registers/RegisterRequest";
 import SignUp from "./components/auth/SignUp";
-import CreateHost from "./components/Host/CreateHost";
 import CreatePost from "./components/Post/CreatePost";
+import Registers from "./components/Registers/Registers";
 
 function App() {
   return (
@@ -16,12 +17,14 @@ function App() {
       <div className="App">
         <NavBar />
         <Switch>
-          <Route exact path="/" component={DashBoard} />
-          <Route path="/host/:hostId" component={HostDetails} />
+          <Route exact path="/" component={Search} />
+          <Route path="/user/:userId" component={UserProfile} />
+          <Route path="/edituser/:userId" component={EditProfile} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/register" component={CreateHost} />
+          <Route path="/register" component={RegisterRequest} />
           <Route path="/newpost" component={CreatePost} />
+          <Route path="/registers" component={Registers} />
         </Switch>
       </div>
     </BrowserRouter>
