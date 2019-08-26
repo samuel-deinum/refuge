@@ -47,10 +47,14 @@ class Modal extends Component {
     //CARD ACTIONS
     const cardActions = remove ? (
       <div className="card-action">
-        <a className="btn blue" onClick={() => this.handleDelete(info.id)}>
+        <a className="btn #7AC9C6" onClick={() => this.handleDelete(info.id)}>
           Remove
         </a>
-        <a className="btn red" style={{ marginLeft: "10px" }} onClick={cancel}>
+        <a
+          className="btn orange"
+          style={{ marginLeft: "10px" }}
+          onClick={cancel}
+        >
           Cancel
         </a>
       </div>

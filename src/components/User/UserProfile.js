@@ -15,6 +15,7 @@ const userProfile = props => {
 
   //Set Info Actions
   let infoActions = null;
+  let postActions = false;
   if (auth.uid === props.match.params.userId) {
     infoActions = (
       <div className="card-action">
@@ -36,6 +37,7 @@ const userProfile = props => {
         </Link>
       </div>
     );
+    postActions = true;
   }
   return (
     <div className="container">
@@ -50,14 +52,21 @@ const userProfile = props => {
               <br />
               Phone: {info.phone}
               <br />
+              <span className="grey-text">{info.description}</span>
             </p>
           </div>
           {infoActions}
         </div>
-        <div className="col l6 m12 s12 offset-l1 offset-m0 offset-s0">
-          <h4 style={{ marginTop: 0 }}>My Postings</h4>
-          <PostList posts={posts} filter={{ type: "orgId", value: auth.uid }} />
-        </div>
+        {info.type === "HOST" ? (
+          <div className="col l6 m12 s12 offset-l1 offset-m0 offset-s0">
+            <h4 style={{ marginTop: 0 }}>My Postings</h4>
+            <PostList
+              posts={posts}
+              filter={{ type: "orgId", value: auth.uid }}
+              postActions
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

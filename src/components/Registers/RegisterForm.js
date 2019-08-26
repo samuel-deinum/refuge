@@ -91,13 +91,13 @@ class RegisterForm extends Component {
           />
           <div className="input-field">
             <button
-              className="btn blue lighten-1 z-depth-0"
+              className="btn #7AC9C6 lighten-1 z-depth-0"
               onClick={this.handleSignUp}
             >
               Register
             </button>
             <button
-              className="btn red z-depth-0"
+              className="btn orange z-depth-0"
               onClick={this.props.cancel}
               style={{ marginLeft: "10px" }}
             >

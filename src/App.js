@@ -9,6 +9,7 @@ import SignIn from "./components/auth/SignIn";
 import RegisterRequest from "./components/Registers/RegisterRequest";
 import SignUp from "./components/auth/SignUp";
 import CreatePost from "./components/Post/CreatePost";
+import ReservePost from "./components/Post/ReservePost";
 import Registers from "./components/Registers/Registers";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/register" component={RegisterRequest} />
           <Route path="/newpost" component={CreatePost} />
+          <Route path="/reservepost/:postId" component={ReservePost} />
           <Route path="/registers" component={Registers} />
         </Switch>
       </div>

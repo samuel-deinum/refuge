@@ -8,7 +8,7 @@ class CreatePost extends Component {
   state = {
     type: "",
     n: "",
-    description: ""
+    active: ""
   };
 
   componentWillUnmount = () => {
@@ -25,7 +25,11 @@ class CreatePost extends Component {
   };
 
   handleSelect = e => {
-    this.setState({ type: e.value });
+    let n = this.state.n;
+    if (e.value !== "FAMILY") {
+      n = "1";
+    }
+    this.setState({ type: e.value, n, active: "active" });
   };
 
   render() {
@@ -44,36 +48,33 @@ class CreatePost extends Component {
     }
     return (
       <div onSubmit={this.handleSubmit} className="container">
-        <form actions="" className="white">
-          <h5 className="grey-text text-darken-3">New Post</h5>
-          <Select
-            options={[
-              { value: "ROOM", label: "Room" },
-              { value: "BED", label: "Bed" }
-            ]}
-            onChange={this.handleSelect}
-          />
-          <div className="input-field">
-            <label htmlFor="n">Number of Beds</label>
-            <input
-              type="number"
-              id="n"
-              onChange={this.handleChange}
-              value={this.state.address}
+        <form actions="" className="card" style={{ marginTop: "20px" }}>
+          <div className="card-content">
+            <div className="card-title">New Post</div>
+            <Select
+              options={[
+                { value: "FAMILY", label: "Family" },
+                { value: "MALE", label: "Male" },
+                { value: "FEMALE", label: "Female" }
+              ]}
+              onChange={this.handleSelect}
             />
+            <div className="input-field">
+              <label htmlFor="n" className={this.state.active}>
+                Number of Beds
+              </label>
+              <input
+                type="number"
+                id="n"
+                onChange={this.handleChange}
+                value={this.state.n}
+              />
+            </div>
+            <div className="input-field">
+              <button className="btn #7AC9C6 lighten-1 z-depth-0">Post</button>
+            </div>
+            <p className="red-text center">{postError}</p>
           </div>
-          <div className="input-field">
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              className="materialize-textarea"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Post</button>
-          </div>
-          <p className="red-text center">{postError}</p>
         </form>
       </div>
     );

@@ -1,6 +1,8 @@
 const initState = {
   postSuccess: null,
-  postError: null
+  postError: null,
+  reserveSuccess: null,
+  reserveError: null
 };
 
 const postReducer = (state = initState, action) => {
@@ -22,6 +24,22 @@ const postReducer = (state = initState, action) => {
         ...state,
         postSuccess: null,
         postError: null
+      };
+    case "RESERVE_POST_SUCCESS":
+      return {
+        ...state,
+        reserveSuccess: true
+      };
+    case "RESERVE_POST_ERROR":
+      return {
+        ...state,
+        reserveError: action.error
+      };
+    case "RESERVE_POST_EXIT":
+      return {
+        ...state,
+        reserveSuccess: null,
+        reserveError: null
       };
     default:
       return state;

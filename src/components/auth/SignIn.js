@@ -84,6 +84,10 @@ class SignIn extends Component {
             </div>
           </div>
         </div>
+        <p className="red-text center">
+          This is an example site for display purposes. To login use email:
+          example@refugio.com and password: 654321
+        </p>
       </div>
     );
   }

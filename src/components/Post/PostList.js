@@ -6,7 +6,9 @@ import PostSummary from "./PostSummary";
 const postList = props => {
   const posts = props.posts.map(p => {
     if (!props.filter || p[props.filter.type] === props.filter.value) {
-      return <PostSummary info={p} key={p.id} />;
+      return (
+        <PostSummary info={p} key={p.id} postActions={props.postActions} />
+      );
     }
   });
   return <div className="row">{posts}</div>;

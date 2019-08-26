@@ -88,6 +88,30 @@ export const signUp = (newUser, regId) => {
   };
 };
 
+export const updateProfile = (newInfo, id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore
+      .collection("users")
+      .doc(id)
+      .set(
+        {
+          ...newInfo
+        },
+        { merge: true }
+      )
+      .then(() => {
+        dispatch({
+          type: "UPDATE_PROFILE_SUCCESS"
+        });
+      })
+      .catch(error => {
+        dispatch({ type: "UPDATE_PROFILE_ERROR", error });
+      });
+  };
+};
+
 export const sendSignUp = (newUser, id) => {
   console.log(id);
   return (dispatch, getState, { getFirebase, getFirestore }) => {

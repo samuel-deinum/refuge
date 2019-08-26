@@ -4,7 +4,9 @@ const initState = {
   regSuccess: null,
   sendSignUpSuccess: false,
   sendSignUpError: "TEST",
-  checkedEmail: false
+  checkedEmail: false,
+  updateProfileSuccess: false,
+  updateProfileError: null
 };
 
 const authReducer = (state = initState, action) => {
@@ -50,6 +52,19 @@ const authReducer = (state = initState, action) => {
       return {
         ...state,
         sendSignUpError: action.error.message
+      };
+    case "UPDATE_PROFILE_SUCCESS":
+      return {
+        ...state,
+        updateProfileSuccess: true
+      };
+    case "UPDATE_PROFILE_ERROR":
+      return { ...state, updateProfileError: action.error };
+    case "UPDATE_PROFILE_EXIT":
+      return {
+        ...state,
+        updateProfileSuccess: false,
+        updateProfileError: null
       };
     default:
       return state;
